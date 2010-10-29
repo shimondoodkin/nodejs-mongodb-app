@@ -1,77 +1,45 @@
-# jsdom
+## The idea:
+the idea is to create somthing similar to hkvstore.com's Phpmaker or Aspmaker or Microsoft Dot.NET 3 sp1 DynamicData application.
 
-CommonJS implementation of the DOM intended to be platform independent and as minimal/light as possible while completely adhering to the w3c DOM specifications.
+an application runtime generation framework. to generate nodejs+mongodb(+nginx) applications.
+in those modes of development you configure the data models, and all else is kind of, 
+generated or code reused, 
+to allow to create data managment web application quickly and easyly with very little effort.
 
-Currently Implemented and w3c Compliant:
+## links:
 
-  - DOM Level 1 (html/svg/xml) 
-  - Browser (BOM) Augmentation (getElementsByClassName, getElementById, etc..)
+http://www.asp.net/dynamicdata
 
-
-**Note**: Running the tests now requires [mjsunit.runner][]
-
-see: [testlog][] for w3 test compliance
-
-see: [plan][] for roadmap and thoughts about this project
-
-see: [project site][] for additional information
-
-  [project site]: http://www.jsdom.org
-  [mjsunit.runner]: http://github.com/tmpvar/mjsunit.runner
-  [testlog]: http://github.com/tmpvar/jsdom/blob/master/test/testlog.txt
-  [plan]: http://github.com/tmpvar/jsdom/blob/master/PLAN.md
+http://www.hkvstore.com/phpmaker/
 
 
-# Examples
+The first idea about application structure was:
+the application is a single aplication but i can be defined in several moduls.
 
-## Creating a document-less window
+now i find it hard to implement everything i shared objects.
 
-    var jsdom  = require("jsdom"),
-        window = jsdom.createWindow();
+## Logical app object model:
+   '- application
+      |- shared_models
+      |- shared_templates of the application
+      |- shared_pages of pages
+      '- shared_url_routes
 
-    console.log(window.document);
-    // output: undefined
+###the same in words:
 
-## Creating a document
-    var jsdom = require("jsdom"),
-        doc   = new (jsdom.dom.level1.core.Document)();
-    console.log(doc.nodeName);
-    // outputs: #document
+the application object is shared and accesible between all moduls in the application. 
+a module contains a part of application definition functions and objects.
+application definition can be spread between many moduls for convinience
 
-## Creating a browser-like BOM/DOM/Window
+a module extends the application object or the application's shared objects boted in the tree chart above.
 
-    var jsdom  = require("./lib/jsdom").jsdom,
-        window = jsdom("<html><head></head><body>hello world</body></html>").createWindow();
+it is posible to define a model in a module, then call kind of a macro function 
+that adds all (edit,add,delete,list) functions and templates and urls to the application 
+as defined by that model.
+also you can define all those by your self so you can make custom pages.
 
-    console.log(window.document.innerHTML);
-    // output: '<html><head></head><body>hello world</body></html>'
-
-    console.log(window.innerWidth)
-    // output: 1024
-
-    console.log(typeof window.document.getElementsByClassName);
-    // outputs: function
-
-## Load arbitrary scripts
-    var jsdom  = require("jsdom").jsdom,
-        window = jsdom().createWindow(),
-        script = window.document.createElement("script");
-
-    script.src = 'http://code.jquery.com/jquery-1.4.2.js';
-
-    script.onload = function() {
-      if (this.readyState === 'complete') {
-        console.log(window.jQuery.fn.jquery);
-        // outputs: 1.4.2
-      }
-    };
-
-## jQueryify
-
-    var jsdom  = require("jsdom"),
-        window = jsdom.jsdom().createWindow();
-
-    jsdom.jQueryify(window, "http://code.jquery.com/jquery-1.4.2.min.js" , function() {
-      window.jQuery('body').append(<div class='testing'>Hello World, It works</div>");
-      console.log(window.jQuery(".testing").text());
-    });
+## templates system:
+what is good about phpmaker is that it allows you easyly define an application,
+what is good in dot net DynamicData is that the templates are like components.
+in templates you have: fields/textfiled.html, paritials/grid.html, pages/list.html 
+at 1st all files composed together. later it is used as template.
