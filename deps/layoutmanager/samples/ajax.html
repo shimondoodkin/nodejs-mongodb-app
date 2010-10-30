@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+	"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+  <title>Layout Manager Simple Test</title>
+
+  <script type="text/javascript" src="../lib/prototype.js"></script>
+  <script type="text/javascript" src="../src/layout_manager.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="style.css"/>
+</head>
+
+<body>              
+  <div class="lm_container">	
+	  <div class="lm_top top1">
+	    Top header #1, no height given <br/>
+	    padding: 5px;<br/>
+	    margin: 5px;
+    </div>
+
+	  <div class="lm_top top2">
+	    Top header #2<br/>
+	    height:  70px<br/>
+	    padding: 2px
+	  </div>
+
+	  <div class="lm_left left1">
+	    Left column #1<br/>
+	    padding: 10px;<br/>
+      width: 100px;<br/>    
+	  </div>
+
+	  <div class="lm_left left2">
+	    Left column #1<br/>
+      padding: 5px;<br/>
+      border:  4px;<br/>
+      width: 100px;    
+	  </div>
+
+	  <div class="lm_center" id="center">   
+	    Center element<br/>
+	    No width or height set<br/>
+	    padding: 30px 10px 10px 10px; <br/><br/>
+	    <a href="#" onclick="loadContent(); return false;">Update this element #2</a>  
+	    <div id="loader" style="display:none">Loading ... (wait 2 sec) <img src="progress.gif"/></div>
+		</div>  
+	  <div class="lm_right right1">
+	    Right Column with long content and scroll<br/>  <br/>
+	    padding: 5px;<br/>
+      width: 100px;<br/><br/><br/>
+      
+	    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+	  </div>  
+
+	  <div class="lm_bottom bottom1">
+	    Bottom #1<br/>
+	    padding: 20px;   <br/>
+      border: 5px;
+	  </div>
+
+	  <div class="lm_bottom bottom2">
+	    Bottom #1<br/>
+	    No height given<br/>
+      padding: 10px;   <br/>
+	  </div> 
+	</div>    
+	
+	<script> 
+	function loadContent() {                                                                                          
+	  $('loader').show();
+	  runAjaxRequest.delay(2)
+	}                           
+	
+	function runAjaxRequest() {
+    new Ajax.Updater('center', './_ajax_content.html', {onSuccess:layoutManager.add.bind(layoutManager, 'center')})	  	  
+	}
+	</script>
+</body>
+</html>

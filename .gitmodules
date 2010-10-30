@@ -1,0 +1,35 @@
+[submodule "deps/node-mongodb-native"]
+	path = deps/node-mongodb-native
+	url = http://github.com/christkv/node-mongodb-native.git
+
+[submodule "deps/step"]
+	path = deps/step
+	url = http://github.com/creationix/step.git
+
+[submodule "deps/nodejs-autorestart"]
+	path = deps/nodejs-autorestart
+	url = http://github.com/shimondoodkin/nodejs-autorestart.git
+
+[submodule "deps/nodejs-clone-extend"]
+	path = deps/nodejs-clone-extend
+	url = http://github.com/shimondoodkin/nodejs-clone-extend.git
+
+[submodule "deps/nodejs-meta-templates"]
+	path = deps/nodejs-meta-templates
+	url = http://github.com/shimondoodkin/nodejs-meta-templates.git
+
+[submodule "deps/node-formidable"]
+	path = deps/node-formidable
+	url = http://github.com/felixge/node-formidable.git
+
+[submodule "deps/node-microseconds"]
+	path = deps/node-microseconds
+	url = http://github.com/tmpvar/node-microseconds.git
+	
+[submodule "deps/jMediaelement"]
+	path = deps/jMediaelement
+	url = http://github.com/aFarkas/jMediaelement.git
+
+[submodule "deps/restler"]
+	path = deps/restler
+	url = http://github.com/ashleydev/restler.git

@@ -1,0 +1,88 @@
+<%
+if (field.edittag.lookup.usetable) 
+{
+%>
+<select name="<%=this.htmlencode(model_name+'['+fieldname+']')%>" size=1>
+<?
+var s_subitems=<%=sub_cursors_name%>[<%=JSON.stringify(fieldname)%>];
+if(s_subitems)
+{
+ var s_value_f=(!s_subitems.lookupinfo.linkedfield)?s_subitems.lookupinfo.displayfield:s_subitems.lookupinfo.linkedfield;
+ var s_value_d1=s_subitems.lookupinfo.displayfield;
+ var s_value_d2=s_subitems.lookupinfo.displayfield2?s_subitems.lookupinfo.displayfield2:false;
+ var s_rows=s_subitems.cursor;
+ var s_value=value || "";
+ var s_sel_found=false;
+ var s_key_is_id=(s_value_f=='_id');
+ var s_value_d1_is_id=(s_value_d1=='_id');
+ var s_value_d2_is_id=(s_value_d2=='_id');
+ 
+ 
+ for(var i=0,l=s_rows.length;i<l;i++)
+ {
+ 
+  s_row=s_rows[i];
+  ?>
+  <option value="<?=this.htmlencode(s_key_is_id?s_row[s_value_f].toHexString():s_row[s_value_f])?>" <? 
+  
+   if( s_row[s_value_f] == s_value || (s_row[s_value_f] && s_row[s_value_f].id&&s_value.id? s_row[s_value_f].id==s_value.id:false ) ) { s_sel_found=true; echo +='selected'; } ?> ><?
+   echo += this.htmlencode(s_value_d1_is_id&&s_row[s_value_d1].toHexString?s_row[s_value_d1].toHexString():s_row[s_value_d1]) || ""; 
+  if(s_value_d2)
+  {
+   echo += ', '; toHexString
+   echo += this.htmlencode(s_value_d2_is_id&&s_row[s_value_d2].toHexString?s_row[s_value_d2].toHexString():s_row[s_value_d2]) || "";
+  }
+  if(false)
+  {
+  ?>
+  <?=s_value_f?>
+  <?=s_value_d1?>
+  <?=s_value_d2?>
+  <?
+  }
+  ?></option><?
+ }
+ if(!s_sel_found && s_value!='')
+ {
+  ?><option value="<?=this.htmlencode(s_key_is_id&&s_value.toHexString?s_value.toHexString():s_value)?>" <? echo +='selected';?> ><?=this.htmlencode(s_key_is_id&&s_value.toHexString?s_value.toHexString():s_value)?> - Not in list</option><?
+  
+ }
+}
+?>
+</select>
+<%
+}
+else
+{
+%>
+<?
+ var s_value=value || "";
+ var s_sel_found=false;
+?>
+<select name="<%=this.htmlencode(model_name+'['+fieldname+']')%>" size=1>
+<%
+if(field.edittag.lookup.values)
+{
+ for(var key in field.edittag.lookup.values)
+ {
+  if(field.edittag.lookup.values.hasOwnProperty(key) )
+  {
+   %>
+   <option value="<%=this.htmlencode(key)%>" <? if( s_value == <%=JSON.stringify(key)%> ) { s_sel_found=true; echo +='selected'; } 
+   ?> ><%=this.htmlencode(field.edittag.lookup.values[key])%></option><%
+  }
+ }
+%>
+<?
+ if(!s_sel_found && s_value!='')
+ {
+  ?><option value="<?=this.htmlencode(s_value)?>" <? echo +='selected';?> ><?=this.htmlencode(s_value)?> - Not in list</option><?
+ }
+ ?>
+ <%
+}
+%>
+</select>
+<%
+}
+%>

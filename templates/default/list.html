@@ -1,0 +1,9 @@
+<%
+
+this.load1('listgrid','paritials/listgrid.html');
+
+echo+=this.listgrid(this._.replace(vars,{'model_name':'model_list','model':model_list,'cursor_name':'cursor_list'}));
+
+echo=app.templates.admin.call(page,this._.replace(vars,{'content':echo}));//this is a wrapper
+
+%>

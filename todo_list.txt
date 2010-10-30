@@ -1,0 +1,9 @@
+todo list:ᅜ
+make popups work
+111
+add to gitmodules 
+http://github.com/polotek/libxmljs.git
+git://github.com/driverdan/node-XMLHttpRequest.git
+
+.. prepere mp3
+ 

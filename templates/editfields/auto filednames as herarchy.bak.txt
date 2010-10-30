@@ -1,0 +1,64 @@
+<%
+
+var thisnewname=filedname;
+echo+="*"+thisnewname+","+namestack.join('A')+"*<br>";
+thisname=namestack.join('_')+(namestack.length>0?'A':'')+thisnewname;
+if( typeof usednames[thisname]==='undefined' ) usednames[thisname]=1;
+else { usednames[thisname]++;  thisname+='+'+usednames[thisname]; }
+namestack.push(thisname);
+echo+="["+thisname+"]<br>";
+
+
+
+%>
+<input type="text" name="<%=filedname%>" value="<?= vars.value || "" ?>" />
+<%
+namestack.pop();
+%>
+
+
+
+---------see namestack usednames poniters---------
+this.page=function(app,model)
+{
+ var page=
+     {
+      pageurl:'/add.jsp',
+       // add error on existing function       
+       load_templates:  // strings treated as template filenames to load and prepeare
+       {
+        add:"default/add.html",
+       }, 
+       // will be here: this.add=function(){...
+       
+       prepeare_templates:  // function treated as templates to prepeare
+       {
+        //template2:function (vars){var echo=""; echo+=... return echo;}, 
+       },
+       // will be here: this.template2=function(){...
+
+       // to load more templates from templates , use:
+       //    this.load('addgrid','paritials/addgrid.html');
+       //    this.addgrid({'data1':data});
+       
+       prepere_data:function (page,template_name)
+       {
+        return {'page':page,'app':app, model_name:'model1', 'model1':page.model ,namestack:[],usednames:{} };  <<< namestack usednames poniters
+       },
+       
+       main:function (req,res,page,callback)
+       {
+        //var currentpage=request.querystring['page']
+        res.writeHead(200, { 'Content-Type': 'text/html'});        
+        data1={'page':page,'app':app, model_name:'model1', 'model1':page.model };
+        res.write(      page.add.call(page,data1)        );
+        res.end();
+        return true;
+       },
+      };
+      
+      
+ 
+ return page; 
+} ;
+ 

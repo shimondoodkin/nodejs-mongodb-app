@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>ממשק ניהול</title>
+<%
+if(vars.req)
+{
+ if(vars.req.template_jquery || vars.req.template_jqueryui)
+ {
+  %>
+  <script type="text/javascript" src="/lib/jquery/js/jquery-1.4.2.min.js"></script>
+  <%
+ }
+ if(vars.req.template_jqueryui)
+ {
+  %>
+   <link type="text/css" href="/lib/jquery/css/smoothness/jquery-ui-1.8.2.custom.css" rel="stylesheet" />	
+   <script type="text/javascript" src="/lib/jquery/js/jquery-ui-1.8.2.custom.min.js"></script><%
+  
+  if(vars.req.template_jqueryui_date){
+  %>
+  <script type="text/javascript"> 
+	$(function() {
+		$(".ui_date").datepicker();
+	});
+	</script><%}
+ }
+ if(vars.req.template_need_ckeditor)
+ {
+  %>
+  <script type="text/javascript" src="/lib/ckeditor/ckeditor.js"></script><%
+ }
+}
+%>
+</head>
+<body>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td height="60" bgcolor="#0a1ed4"  style="color:#FFFFFF;padding-left:10px;padding-right:10px;"><span style="font-size:265%;font-style:italic">PIJIMI ADMIN</span></td>
+    <td height="60" bgcolor="#0a1ed4" dir="rtl" style="color:#FFFFFF;padding-left:10px;padding-right:10px;text-align:right;direction:rtl"><span style="font-size:265%;font-style:italic">ממשק ניהול</span></td>
+  </tr>
+</table>
+
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td dir="rtl" style="padding:10px;text-align:right;direction:rtl" valign="top"><%=content%></td>
+        <td dir="rtl" valign="top" width="225" bgcolor="#ccd5f4" style="padding:10px;text-align:right;direction:rtl">
+         <%
+          function print_menu(menu1)
+          {
+           var echo;
+           for(link in menu1)
+           {
+            echo+='<?link='+JSON.stringify(link)+'?>';
+            %>
+            <ul>
+             <li><a href="<?=link.href?>"><?=link.name?></a></li>
+             <%=print_menu(menu1)%>
+            </ul>
+            <%
+           }
+           return echo;
+          }
+          //echo+=print_menu(menu);
+          var m;
+          echo+='<ul>';
+          for(m in app.models)
+           {
+            echo += "<li><a href=\"/"+app.models[m].general.urlprefix+app.models[m].pages.list.pageurl+"\">"+app.models[m].general.title+"</a>";
+           }
+         echo+='</ul>';
+         %>
+        </td>
+      </tr>
+</table>
+</body>
+</html>

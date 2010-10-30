@@ -1,0 +1,10 @@
+<?
+var row=<%=cursor_name%>[0];
+var value;
+?>
+<form action="/<%=model.general.urlprefix+page.pageurl%>" method="post">
+<input type="hidden" name="<%=model_name%>[_id]" value="<?=row['_id'].toHexString()?>">
+<table border=1>
+<tr><td></td><td><input type=submit value="delete"> <a href="/<%=model.general.urlprefix+model.pages.list.pageurl%>">back to list</a></td></tr> 
+</table>
+</form>

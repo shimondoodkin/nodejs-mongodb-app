@@ -1,0 +1,24 @@
+<%vars.req.template_jquery=true%>
+<span>
+<input type="file" name="<%=this.htmlencode(model_name+'['+fieldname+'][upload]')%>" onchange="
+ if(this.value!='') 
+  $(this).parent().children('label').children('input[value=replace]')[0].checked=true;
+ else 
+  $(this).parent().children('label').children('input[value=keep]')[0].checked=true;
+ " />
+<?
+if(value)
+{
+//git://github.com/neodon/gibberish-aes.git maybe to encrypt the hidden file name or better load the data from database every time before update
+?>
+<input type="hidden" name="<%=this.htmlencode(model_name+'['+fieldname+'][value]')%>" value="<?= this.htmlencode( JSON.stringify(value) ) ?>" />
+<label dir=ltr> <input type="radio" name="<%=this.htmlencode(model_name+'['+fieldname+'][action]')%>" value="keep" checked /> keep </label>
+ 
+<label dir=ltr> <input type="radio" name="<%=this.htmlencode(model_name+'['+fieldname+'][action]')%>" value="replace"  /> replace </label>
+ 
+<label dir=ltr> <input type="radio" name="<%=this.htmlencode(model_name+'['+fieldname+'][action]')%>" value="delete"  /> delete </label><br>
+
+<span><?= this.htmlencode(value && value.filename?value.filename : "")?></span>
+<? 
+}
+?></span>

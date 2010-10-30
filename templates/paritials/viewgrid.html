@@ -1,0 +1,22 @@
+<%=model.general.title%>
+<?
+var row=<%=cursor_name%>[0];
+var value;
+?>
+<table border=1>
+<%
+var fieldname;
+for(fieldname in model.fields)
+{
+ field=model.fields[fieldname];
+ %>
+ <tr>
+ <td><%=field.general.title%></td>
+ <td><?=row[<%=JSON.stringify(fieldname) %>]<% if(fieldname=='_id') echo+='.toHexString()'%> || '' ?></td> 
+ </tr>
+ <% 
+}
+%>
+<tr><td></td><td><a href="/<%=model.general.urlprefix+model.pages.list.pageurl%>">back to list</a></td></tr>
+</table>
+<small>id: <?=row['_id'].toHexString()?></small>

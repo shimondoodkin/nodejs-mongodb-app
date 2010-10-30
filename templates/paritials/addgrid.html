@@ -1,0 +1,21 @@
+<%=model.general.title%>
+<form action="/<%=model.general.urlprefix+page.pageurl%>" method="post" enctype="multipart/form-data">
+<table border=1>
+<?var value='',filed={};?>
+<%
+var fieldname;
+for(fieldname in model.fields)
+{
+ field=model.fields[fieldname];
+ %>
+ <?field=<%=model_name%>.fields[<%=JSON.stringify(fieldname)%>];?>
+ <tr>
+ <td><%=field.general.title%></td>
+ <td><%=app.editfields[ field.edit.ftype ](this._.replace(vars,{'fieldname':fieldname,'field':field}));%> 
+ </tr>
+ <% 
+}
+%>
+<tr><td></td><td><input type=submit value="add"> <a href="/<%=model.general.urlprefix+model.pages.list.pageurl%>">back to list</a></td></tr> 
+</table>
+</form>

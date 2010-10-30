@@ -1,0 +1,27 @@
+<%=model.general.title%>
+<?
+var row=<%=cursor_name%>[0];
+var value,field;
+?>
+<form action="/<%=model.general.urlprefix+page.pageurl%>" method="post" enctype="multipart/form-data">
+<input type="hidden" name="<%=model_name%>[_id]" value="<?=row['_id'].toHexString()?>">
+<table border=1>
+<%
+var fieldname,filed;
+for(fieldname in model.fields)
+{
+ field=model.fields[fieldname];
+ %>
+ <?
+  value=row[<%=JSON.stringify(fieldname) %>]<% if(fieldname=='_id') echo+='.toHexString()'%> || '';
+ ?>
+ <tr>
+ <td><%=field.general.title%></td>
+ <td><%=app.editfields[ field.edit.ftype ] (  this._.replace(vars,{'fieldname':fieldname,'field': field })  );%> 
+ </tr>
+ <% 
+}
+%>
+<tr><td></td><td><input type=submit value="edit"> <a href="/<%=model.general.urlprefix+model.pages.list.pageurl%>">back to list</a></td></tr> 
+</table>
+</form>

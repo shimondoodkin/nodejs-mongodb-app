@@ -1,0 +1,7 @@
+<%
+this.load1('viewgrid','paritials/viewgrid.html');
+
+ echo+=this.viewgrid(this._.replace(vars,{'model_name':'model_view','model':model_view, sub_cursors_name:'sub_cursors_view', sub_cursors: sub_cursors_view }));
+
+echo=app.templates.admin.call(page,this._.replace(vars,{'content':echo}));//this is a wrapper
+%>

@@ -1,0 +1,6 @@
+<%
+//app.parse.date=require('./date').parse; // idea for built in code behind
+
+if(vars.req)vars.req.template_need_ckeditor=true;
+%>
+<textarea class="ckeditor" name="<%=this.htmlencode(model_name+'['+fieldname+']')%>" ><?=this.htmlencode(value)?></textarea>
