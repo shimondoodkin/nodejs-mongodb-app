@@ -1,6 +1,5 @@
 #nodejs-mongodb-app
-
-it is database managment system for mongo db
+It is a framework to build database management apps (websites) with mongodb and node.js .
 
 #application structure:
 
@@ -17,7 +16,7 @@ an include file contains one function
      this.foo=function(){};
     }
 
-the @app@ object contation libraries
+the `app` object contation libraries
 for example
     app.sys
     app.phpjs
@@ -37,14 +36,14 @@ also the documentation is not ready yet.
 
 how it works:
 you define some models inside a module main function.
-by cloning and extending @app.basicmodel@
-and cloning and extending @app.basicfields.somefiled@
+by cloning and extending `app.basicmodel`
+and cloning and extending `app.basicfields.somefiled`
 
 then you have a managment interface in http://hostname/admin/
 and you can create "page" type controllers in +templates/website+
 to build the website
 
-a page is a @templates_object@ as defined in double templets (nodejs meta templates)
+a page is a `templates_object` as defined in double templets (nodejs meta templates)
 a page also contains a path or pathbegins propery it is for the router.
 
 *feel free to ask questions I will give you guidence.*
