@@ -50,7 +50,10 @@ a page also contains a path or pathbegins propery it is for the router.
 
 a module has setupfirst(app),setupfirst(app)
 
-**feel free to ask questions I will give you guidence and help you setup this system.**
+**feel free to ask questions**
+
+I will give you guidence and help you setup this system.
+
 this system is working in a website i develop for a customer.
 
 ---------------------------------------------------------
