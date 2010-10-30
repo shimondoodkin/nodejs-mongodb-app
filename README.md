@@ -1,51 +1,53 @@
+#nodejs-mongodb-app
 
 it is database managment system for mongo db
 
+#application structure:
 
 in general there is global local variable
 
-app
+    app
 
 it is passed in all function
 
 an include file contains one function
-function main(app) // app is like dependeny injection
-{
- this // usualy: this=app, but might be an other object yo like to extend in this function
- this.foo=function(){};
-}
+    function main(app) // app is like dependeny injection
+    {
+     this // usualy: this=app, but might be an other object yo like to extend in this function
+     this.foo=function(){};
+    }
 
-the app object contation libraries
+the @app@ object contation libraries
 for example
-app.sys
-app.phpjs
+    app.sys
+    app.phpjs
 
 the objects inside the app object
 
-app.models
-app.pages // controllers
-app.route_urls
+    app.models
+    app.pages // controllers
+    app.route_urls
 
 //objects to clonbe and extend:
-app.basicmodel // has function that simplify access to mongodb
-app.basicfields
+    app.basicmodel // has function that simplify access to mongodb
+    app.basicfields
 
 it requires some effort to make this work because of many libraries not all of them included in gitmoduls
 also the documentation is not ready yet.
 
 how it works:
 you define some models inside a module main function.
-by cloning and extending app.basicmodel
-and cloning and extending app.basicfields.somefiled
+by cloning and extending @app.basicmodel@
+and cloning and extending @app.basicfields.somefiled@
 
 then you have a managment interface in http://hostname/admin/
-and you can create "page" type controllers in templates/website
+and you can create "page" type controllers in +templates/website+
 to build the website
 
-a page is a templates_object as defined in double templets (meta templates)
+a page is a @templates_object@ as defined in double templets (nodejs meta templates)
 a page also contains a path or pathbegins propery it is for the router.
 
-feel free to ask questions I will give you guidence.
+*feel free to ask questions I will give you guidence.*
 
 ---------------------------------------------------------
 # old readme:
