@@ -7,7 +7,7 @@ in general there is global local variable
 
     app
 
-it is passed in all function
+it is generally avalible in every file
 
 an include file contains one function
     function main(app) // app is like dependeny injection
@@ -20,16 +20,18 @@ the `app` object contation libraries
 for example
     app.sys
     app.phpjs
+    app.inflow
 
-the objects inside the app object
+objects inside the `app` object
 
     app.models
     app.pages // controllers
     app.route_urls
 
-//objects to clonbe and extend:
-    app.basicmodel // has function that simplify access to mongodb
+//objects to clone and extend:
+    app.basicmodel 
     app.basicfields
+
 
 it requires some effort to make this work because of many libraries not all of them included in gitmoduls
 also the documentation is not ready yet.
@@ -46,7 +48,10 @@ to build the website
 a page is a `templates_object` as defined in double templets (nodejs meta templates)
 a page also contains a path or pathbegins propery it is for the router.
 
-*feel free to ask questions I will give you guidence.*
+a module has setupfirst(app),setupfirst(app)
+
+**feel free to ask questions I will give you guidence and help you setup this system.**
+this system is working in a website i develop for a customer.
 
 ---------------------------------------------------------
 # old readme:
