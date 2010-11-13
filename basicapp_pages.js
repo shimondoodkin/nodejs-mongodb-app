@@ -10,7 +10,7 @@ this.main=function(app)
    ckeditor        :require('cachedfolder_page').page.call(app,app,'lib/ckeditor','deps/ckeditor',/\.(js|html|gif|png|jpg|ico|css)$/,/(^\.)|(^_)|(\.\/)|(\.svn)/),
    slickgrid       :require('cachedfolder_page').page.call(app,app,'lib/slickgrid','deps/SlickGrid',/\.(js|html|gif|png|jpg|ico|css)$/,/MIT-LICENSE.txt|tests|build|\.git/),
    datejs          :require('cachedfolder_page').page.call(app,app,'lib/datejs','deps/datejs',/\.(js|html|gif|png|jpg|ico|css)$/,/LICENSE.txt|README.txt|CHANGELOG.txt|TODO.txt|tests|\.git/),
-  
+   date            :require('cachedfolder_page').page.call(app,app,'lib/date','deps/date',/\.(js|html|gif|png|jpg|ico|css)$/,/LICENSE.txt|README.txt|CHANGELOG.txt|TODO.txt|tests|\.git/),
   };
   
   app.setuppages=function(callback)

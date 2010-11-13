@@ -69,15 +69,22 @@ var app={};this.app = app;
 
 app.libs={};
 
+
 app.autoreload       = require('deps/node-hot-reload'); app.autoreload.path=__dirname;
 app._                = require('deps/nodejs-clone-extend/merger');  //  lets do: _.extend(same,otherobjexts),  _.clone(obj) - creates new reference, see source to understand //
+app.jsinc            = require('deps/jsinc').jsinc;
+app.linq             = app.jsinc(__dirname+'/deps/jslinq/scripts/JSLINQ.js').window.JSLINQ;
+//app.datejs           = app.jsinc(__dirname+'/deps/datejs/build/date-he-IL.js',{"Date":Date});
+//console.log(app.datejs.CultureInfo);
 app.phpjs            = require('phpjs'); // http://phpjs.org/packages/view/2693/name:806d77a73ce93d851a4620f4a788acd7
-app.date             = require('date'); // http://phpjs.org/packages/view/2693/name:806d77a73ce93d851a4620f4a788acd7
+app.date             = app.jsinc(__dirname+'/deps/date/date.js');
+//app.date             = require('deps/date/date');
 
 app.path             = require('path');
 app.fs               = require('fs');
 app.doubletemplate   = require('deps/nodejs-meta-templates/doubletemplate');;
 app.httputils        = require('httputils');
+app.httprequest      = require('deps/node-utils/request/lib/main');
 app.ObjectID         = require('deps/node-mongodb-native/lib/mongodb/bson/bson').ObjectID;
 app.step             = require('deps/step/lib/step');
 app.sys              = require('sys');

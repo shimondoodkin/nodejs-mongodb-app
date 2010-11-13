@@ -165,15 +165,32 @@ this.main=function(app)
       }
       else
       {
-       this.collection.find(where,
-       function(err, cursor)
+       if(where.$options)
        {
-        if(err) throw err;
-        else 
+        var options =where.$options ; //{'skip':1, 'limit':1, 'sort':'a'}
+        delete where.$options;
+        this.collection.find(where,options,
+        function(err, cursor)
         {
-         if(callback) callback(cursor);
-        }
-       });
+         if(err) throw err;
+         else 
+         {
+          if(callback) callback(cursor);
+         }
+        });
+       }
+       else
+       {
+        this.collection.find(where,
+        function(err, cursor)
+        {
+         if(err) throw err;
+         else 
+         {
+          if(callback) callback(cursor);
+         }
+        });
+       }
       }
       // iterating thru cursor:
       //  cursor.each(function(err, item) {
@@ -211,12 +228,26 @@ this.main=function(app)
       }
       else
       {
-       this.collection.findOne(where,
-       function(err,doc)
+       if(where.$options)
        {
-        if(err) throw err;
-        callback(doc);
-       });
+        var options =where.$options ; //{'skip':1, 'limit':1, 'sort':'a'}
+        delete where.$options;
+        this.collection.findOne(where,options,
+        function(err,doc)
+        {
+         if(err) throw err;
+         callback(doc);
+        });
+       }
+       else
+       {
+        this.collection.findOne(where,
+        function(err,doc)
+        {
+         if(err) throw err;
+         callback(doc);
+        });
+       }
       }
       // iterating thru cursor:
       //  cursor.each(function(err, item) {

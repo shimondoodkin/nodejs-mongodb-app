@@ -72,7 +72,7 @@ function isDate(val,format) {
 	var date=getDateFromFormat(val,format);
 	if (date==0) { return false; }
 	return true;
-	};this.isDate=isDate;
+	};//this.isDate=isDate;
 
 // -------------------------------------------------------------------
 // compareDates(date1,date1format,date2,date2format)
@@ -92,7 +92,7 @@ function compareDates(date1,dateformat1,date2,dateformat2) {
 		return 1;
 		}
 	return 0;
-	};this.compareDates=compareDates;
+	};//this.compareDates=compareDates;
 
 // ------------------------------------------------------------------
 // formatDate (date_object, format)
@@ -153,7 +153,7 @@ function formatDate(date,format) {
 		else { result=result + token; }
 		}
 	return result;
-	};this.formatDate=formatDate;
+	};//this.formatDate=formatDate;
 	
 // ------------------------------------------------------------------
 // Utility functions for parsing in getDateFromFormat()
@@ -164,7 +164,7 @@ function _isInteger(val) {
 		if (digits.indexOf(val.charAt(i))==-1) { return false; }
 		}
 	return true;
-	}this._isInteger=_isInteger;
+	}//this._isInteger=_isInteger;
 function _getInt(str,i,minlength,maxlength) {
 	for (var x=maxlength; x>=minlength; x--) {
 		var token=str.substring(i,i+x);
@@ -172,7 +172,7 @@ function _getInt(str,i,minlength,maxlength) {
 		if (_isInteger(token)) { return token; }
 		}
 	return null;
-	};this._getInt=_getInt;
+	};//this._getInt=_getInt;
 	
 // ------------------------------------------------------------------
 // getDateFromFormat( date_string , format_string )
@@ -303,7 +303,7 @@ function getDateFromFormat(val,format) {
 	else if (hh>11 && ampm=="AM") { hh-=12; }
 	var newdate=new Date(year,month-1,date,hh,mm,ss);
 	return newdate.getTime();
-	};this.getDateFromFormat=getDateFromFormat;
+	};//this.getDateFromFormat=getDateFromFormat;
 
 // ------------------------------------------------------------------
 // parseDate( date_string [, prefer_euro_format] )
@@ -320,8 +320,9 @@ function getDateFromFormat(val,format) {
 // ------------------------------------------------------------------
 function parseDate(val) {
 	var preferEuro=(arguments.length==2)?arguments[1]:false;
-	var window={};
+	//var window={};
 	window.myFormats=new Array('d/M/y','d/M/y H:m','d-M-y','d-M-y H:m','d.M.y','d.M.y H:m','d-MMM','d-MMM H:m','d/M','d/M H:m','d-M','d-M H:m');
+	
 	window.generalFormats=new Array('y-M-d','MMM d, y','MMM d,y','y-MMM-d','d-MMM-y','MMM d');
 	window.monthFirst=new Array('M/d/y','M-d-y','M.d.y','MMM-d','M/d','M-d');
 	window.dateFirst =new Array('d/M/y','d-M-y','d.M.y','d-MMM','d/M','d-M');
@@ -335,6 +336,6 @@ function parseDate(val) {
 			}
 		}
 	return null;
-	};this.parseDate=parseDate;
+	};//this.parseDate=parseDate;
 	
 	

@@ -18,6 +18,26 @@ this.main=function(app)
       return -1;
      };
      
+     //maybe better to use jslinq
+     /*
+     app.dbutil.sub_findoneid=function(arr, colname, id) // used to create assosiative arrays
+     {
+      if(!id.id)
+       return -1;
+      var id =id.id,el,i=arr.length;
+      i--;
+      for(;i>-1;i--)
+      {
+       el=arr[i];
+       if(!el.colname) continue;
+       if(el.colname.id&&el.colname.id==id)
+       {
+        return i;
+       }
+      }
+      return -1;
+     };
+     */
 }
 
 /*
