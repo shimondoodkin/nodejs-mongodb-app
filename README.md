@@ -75,7 +75,7 @@ http://www.hkvstore.com/phpmaker/
 
 
 The first idea about application structure was:
-the application is a single aplication but i can be defined in several moduls.
+the application is a single application but i can be defined in several moduls.
 
 now i find it hard to implement everything i shared objects.
 
